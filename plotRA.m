@@ -1,9 +1,10 @@
 function RA = plotRA(signal,fs,freRange)
+% calculate relative amplitude for a certain frequency
 Nfft = fs;
-f_signal = abs(fft(signal,Nfft));% 将信号补零直至长度为Nfft个点，此时计算FFT分辨率为1 Hz
+f_signal = abs(fft(signal,Nfft));
 f_signal = f_signal(1:Nfft/2);
 f_signal = [f_signal(2:end) 0];
-% 给频谱求相对频谱
+% set the frequency range as the noise floor, and the frequency range as the target
 width = 500;
 inside = 5;
 a = floor(inside/2);
